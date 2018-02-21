@@ -39,3 +39,6 @@ rmdir  "removes a directory.""
 rm -rf "removes a directory and all its contents."
 
 Remember the D.R.Y. principal. Don't Repeat Yourself!
+
+Super useful python documentation!
+pydoc csv.reader

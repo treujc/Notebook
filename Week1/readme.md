@@ -1,0 +1,7 @@
+dir() tells you available commands for an object.
+
+
+Useful links:
+
+OOP:
+https://jeffknupp.com/blog/2014/06/18/improve-your-python-python-classes-and-object-oriented-programming/
