@@ -42,3 +42,6 @@ Remember the D.R.Y. principal. Don't Repeat Yourself!
 
 Super useful python documentation!
 pydoc csv.reader
+
+Inside ipython:
+%timeit #use at the beginning of the line to test for speed.

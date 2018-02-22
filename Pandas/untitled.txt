@@ -1,0 +1,5 @@
+import numpy as np # Numpy is generally used for making fancier lists called arrays and series.
+import pandas as pd # Pandas is super important, it's the foundation data analysis library we're using.
+import matplotlib.pyplot as plt # Matplotlib is the python plotting library and folks generally import it as "plt"
+import matplotlib
+matplotlib.style.use('ggplot')
