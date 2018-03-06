@@ -1,16 +1,19 @@
 from deck import Deck
 from war_player import Player
 import sys
+import pdb
 
 class War(object):
-    def __init__(self, human=True):
+    def __init__(self, human=True, war_size = 3):
         self.human = human
+        self.win_counts = {}
         self.player1 = self.create_player("Player 1")
         self.player2 = self.create_player("Player 2")
         self.winner = None
         self.loser = None
         self.pot = []
         self.deal()
+        self.war_size = war_size
 
     def create_player(self, title):
         if self.human:
@@ -18,6 +21,7 @@ class War(object):
             name = raw_input(msg) if sys.version_info[0] < 3 else input(msg)
         else:
             name = title
+        self.win_counts[name] = 0
         return Player(name)
 
     def deal(self):
@@ -31,6 +35,7 @@ class War(object):
         while self.winner is None:
             self.play_round()
         self.display_winner()
+        self.win_counts[self.winner] += 1
 
     def draw_card(self, player, other_player):
         card = player.play_card()
@@ -51,7 +56,7 @@ class War(object):
         return cards
 
     def war(self):
-        n = 3
+        n = self.war_size
         n = max(min(n, len(self.player1)), min(n, len(self.player2)))
         cards1 = self.draw_cards(self.player1, self.player2, n)
         cards2 = self.draw_cards(self.player2, self.player1, n)
@@ -76,6 +81,7 @@ class War(object):
         player.receive_cards(self.pot)
         self.display_receive(player)
         self.pot = []
+        print("%s has %s cards and %s has %s cards." %(self.player1.name,len(self.player1),self.player2.name,len(self.player2)))
 
     def pause(self):
         if self.human:
@@ -106,7 +112,21 @@ class War(object):
         if self.human:
             print("The winner is %s!!!" % self.winner)
 
+    def play_two_of_three(self):
+        while max(self.win_counts.values()) < 2:
+            self.winner = None
+            self.loser = None
+            self.pot = []
+            self.player1.hand = []
+            self.player2.hand = []
+            self.player1.discard = []
+            self.player2.discard = []
+            self.deal()
+            self.play_game()
 
 if __name__ == '__main__':
     game = War()
     game.play_game()
+    #game.play_two_of_three()
+    #pdb.set_trace()
+    #print(game.win_counts)

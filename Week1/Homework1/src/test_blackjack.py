@@ -50,6 +50,3 @@ def test_play_two_of_three():
     n.assert_equal(max(game.win_counts.values()), 2)
     #Make sure you don't get too many cards!
     n.assert_equal(len(game.player1) + len(game.player2) + len(game.pot), 52)
-
-if __name__ == '__main__':
-    test_war_deal()
