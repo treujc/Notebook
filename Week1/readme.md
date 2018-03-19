@@ -11,3 +11,6 @@ https://www.kaggle.com/sskiing/matplotlib-showcase-examples
 
 Statistics:
 https://galvanizeopensource.github.io/stats-shortcourse/#
+
+Cleansing Data:
+https://www.kaggle.com/dansbecker/handling-missing-values
